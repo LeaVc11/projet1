@@ -9,6 +9,7 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/ecommerce.css') }}" rel="stylesheet">
 
 	<style>
         .bd-placeholder-img {
@@ -54,7 +55,18 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+<script type="text/javascript">
 
+    function placeFooter() {
+        if( $(document.body).height() < $(window).height() ) {
+            $("footer").css({position: "relative", bottom:"0px"});
+        } else {
+            $("footer").css({position: ""});
+        }
+    }
+
+
+</script>
 </body>
 
 </html>
