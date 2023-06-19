@@ -1,17 +1,6 @@
-*, ::before, ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    min-height: 100vh;
-    background: #f1f1f1;
-    font-family: Roboto, sans-serif;
-    padding: 80px 50px
-}
+.container-login{
 
-.container {
     max-width: 600px;
     margin: 0 auto;
     padding: 30px;
@@ -34,7 +23,7 @@ h2 {
 label {
     font-size: 20px;
     display: block;
-    position: relative;
+    position: absolute;
 }
 
 input {
@@ -42,7 +31,7 @@ input {
     width: 100%;
     font-size: 18px;
     color: #f1f1f1;
-    padding: 10px 0;
+    padding: 20px 0;
     outline: 0;
     background: transparent;
     border: none;
@@ -59,10 +48,10 @@ input::placeholder {
     font-size: 16px;
 }
 
-.icon-input-container {
+/*.icon-input-container {
     position: relative;
 
-}
+}*/
 
 .icon-verif {
     width: 30px;
@@ -140,3 +129,4 @@ form button {
 form button:hover {
     background-color: #e3dfa2;
 }
+
