@@ -1,19 +1,70 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Projet E-commerce">
+	<meta name="generator" content="Jekyll v4.1.1">
+	<title>{% block title %} Projet E-commerce{% endblock %}</title>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;1,100&display=swap"
+	      rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/ecommerce.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
+
+
+	<!-- Custom styles for this template -->
+	<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
+</head>
+<body>
+{% include 'base/nav.html.twig' %}
+<main role="main">
+	{% if block('carousel') is defined %}
+	<!--Carousel Start-->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		{% include 'home/carousel.html.twig' %}
+	</div>
+	{% endif %}
+	<!--Carousel End-->
+
+	<!--Categorie Start-->
+	<div class="container categorie {% if block('carousel') is not defined %}mt-5{% endif %}" >
+	{#	{% include 'home/categorie.html.twig' %}#}
+		{% block content %}
+
+		{% endblock %}
+	</div>
+
+	<!--Categorie End-->
+
+	<!-- FOOTER -->
+
+	<div class="container footer ">
+		{% include 'base/footer.html.twig' %}
+	</div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+
+<script type="text/javascript">
+
+    function placeFooter() {
+        if( $(document.body).height() < $(window).height() ) {
+            $("footer").css({position: "relative", bottom:"0px"});
+        } else {
+            $("footer").css({position: ""});
+        }
+    }
+
+
+</script>
+</body>
+
 </html>
