@@ -41,6 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: BlogPost::class, orphanRemoval: true)]
     private Collection $blogPosts;
 
+
     public function __construct()
     {
         $this->blogPosts = new ArrayCollection();
