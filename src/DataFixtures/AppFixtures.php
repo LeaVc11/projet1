@@ -10,6 +10,7 @@ use App\Entity\Vetement;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Faker\Generator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
@@ -17,23 +18,24 @@ class AppFixtures extends Fixture
 {
 
     private UserPasswordHasherInterface $hasher;
+    private Generator $faker;
 
     public function __construct(UserPasswordHasherInterface $hasher)
     {
         $this->hasher = $hasher;
-
+        $this->faker = Factory::create('fr_FR');
     }
 
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create('fr_FR');
+
 
         // Création d'un utilisateur
         $user = new User();
         $user->setEmail('user@test.com')
-            ->setPrenom($faker->firstName())
-            ->setNom($faker->lastName())
-            ->setTelephone($faker->phoneNumber());
+            ->setPrenom($this->faker->firstName())
+            ->setNom($this->faker->lastName())
+            ->setTelephone($this->faker->phoneNumber());
 
         $password = ($this->hasher->hashPassword($user, 'password'));
         $user->setPassword($password);
@@ -46,10 +48,10 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $blogpost = new BlogPost();
 
-            $blogpost->setTitre($faker->words(3, true))
-                ->setCreatedAt($faker->dateTimeBetween('-6 month', 'now'))
-                ->setSlug($faker->slug(3))
-                ->setContenu($faker->text(100))
+            $blogpost->setTitre($this->faker->words(3, true))
+                ->setCreatedAt($this->faker->dateTimeBetween('-6 month', 'now'))
+                ->setSlug($this->faker->slug(3))
+                ->setContenu($this->faker->text(100))
                 ->setUser($user);
 
             $manager->persist($blogpost);
@@ -60,23 +62,24 @@ class AppFixtures extends Fixture
         for ($c = 0; $c < 5; $c++) {
             $categorie = new Categorie();
 
-            $categorie->setNom($faker->word())
-                ->setDescription($faker->words(10, true))
-                ->setSlug($faker->slug(3));
+            $categorie->setNom($this->faker->word())
+                ->setDescription($this->faker->words(10, true))
+                ->setSlug($this->faker->slug(3));
 
             $manager->persist($categorie);
 
             $manager->flush();
 
             // Création vetement
-            for ($v = 0; $v < 10; $v++) {
+            for ($v = 0; $v < 5; $v++) {
                 $vetement = new Vetement();
 
-                $vetement->setNom($faker->words('5', true))
-                    ->setCreatedAt($faker->dateTimeBetween('-6 month', 'now'))
-                    ->setSlug($faker->slug())
-                    ->setDescription($faker->text())
-                    ->setPrix($faker->randomFloat(2, 100, 9999))
+                $vetement->setCategorie($manager->getRepository(Categorie::class)->find($v+1))
+                    ->setNom($this->faker->words('5', true))
+                    ->setCreatedAt($this->faker->dateTimeBetween('-6 month', 'now'))
+                    ->setSlug($this->faker->slug())
+                    ->setDescription($this->faker->text())
+                    ->setPrix($this->faker->randomFloat(2, 100, 9999))
                     ->setFile('/img/cat-1.jpg');
 
                 $manager->persist($vetement);
@@ -87,10 +90,10 @@ class AppFixtures extends Fixture
             for ($co = 0; $co < 10; $co++) {
                 $commentaire = new Commentaire();
 
-                $commentaire->setAuteur($faker->words('5', true))
+                $commentaire->setAuteur($this->faker->words('5', true))
                     ->setEmail('commentaire@test.com')
-                    ->setContenu($faker->text(100))
-                    ->setCreatedAt($faker->dateTimeBetween('-6 month', 'now'));
+                    ->setContenu($this->faker->text(100))
+                    ->setCreatedAt($this->faker->dateTimeBetween('-6 month', 'now'));
 
                 $manager->persist($commentaire);
 
