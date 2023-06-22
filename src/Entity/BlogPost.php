@@ -29,7 +29,7 @@ class BlogPost
     private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'blogPosts')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'blogpost', targetEntity: Commentaire::class)]
