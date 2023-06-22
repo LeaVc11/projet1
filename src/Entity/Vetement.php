@@ -35,7 +35,7 @@ class Vetement
     private ?string $file = null;
 
     #[ORM\ManyToOne(inversedBy: 'vetements')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Categorie $categorie = null;
 
     #[ORM\OneToMany(mappedBy: 'vetement', targetEntity: Commentaire::class)]
