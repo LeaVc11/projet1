@@ -29,14 +29,19 @@
 		{% include 'home/carousel.html.twig' %}
 	</div>
 	{% endif %}
-	<!--Carousel End-->
+	<!--Produit Start-->
+			<div class="container vetement {% if block('carousel') is not defined %}mt-5{% endif %}" >
+				{% include 'home/vetement.html.twig' %}
+				{% block content %}
+
+				{% endblock %}
+			</div>
+	<!--Produit End-->
 
 	<!--Categorie Start-->
 	<div class="container categorie {% if block('carousel') is not defined %}mt-5{% endif %}" >
-	{#	{% include 'home/categorie.html.twig' %}#}
-		{% block content %}
+		{% include 'home/categorie.html.twig' %}
 
-		{% endblock %}
 	</div>
 
 	<!--Categorie End-->

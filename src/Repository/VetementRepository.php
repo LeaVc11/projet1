@@ -21,6 +21,19 @@ class VetementRepository extends ServiceEntityRepository
         parent::__construct($registry, Vetement::class);
     }
 
+    /**
+     * @return Vetement[] Returns an array of Vetement objects
+     */
+    public function lastTree()
+    {
+        return $this->createQueryBuilder('v')
+
+            ->orderBy('v.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     public function save(Vetement $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

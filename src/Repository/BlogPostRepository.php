@@ -21,6 +21,16 @@ class BlogPostRepository extends ServiceEntityRepository
         parent::__construct($registry, BlogPost::class);
     }
 
+    public function lastTreeBlog()
+    {
+        return $this->createQueryBuilder('b')
+
+            ->orderBy('b.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     public function save(BlogPost $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
