@@ -3,8 +3,9 @@
 </div>
 <!-- Products Start -->
 <div class="row">
-	<div class="col-lg-4">
-{#		{% for vetement in vetements %}#}
+	{% for vetement in vetements %}
+	<div class="col-md-4">
+
 		<div class="text-center">
 			<img class=" rounded-circle" width="200" height="140" role="img" src="img/cat-1.jpg" alt="">
 		</div>
@@ -14,32 +15,33 @@
 		<div class="d-flex justify-content-center">
 			<h6>$123.00</h6>
 		</div>
-		<p class=" d-flex justify-content-center m-1"><a class=" font-weight-bold btn btn-secondary" href="#">View details </a></p>
+		<p class=" d-flex justify-content-center m-1"><a class=" font-weight-bold btn btn-secondary" href="#">View
+				details </a></p>
 	</div>
-{#	<div class="col-lg-4">#}
-{#		<div class="text-center">#}
-{#			<img class=" rounded-circle" width="200" height="140" role="img" src="img/cat-2.jpg" alt="">#}
-{#		</div>#}
-{#		<h2 class="fw-normal m-2">Titre</h2>#}
-{#		<p>Some representative placeholder content for the three columns of text below the carousel. This is the#}
-{#			first column.</p>#}
-{#		<div class="d-flex justify-content-center">#}
-{#			<h6>$123.00</h6>#}
-{#		</div>#}
-{#		<p class=" d-flex justify-content-center m-1"><a class=" font-weight-bold btn btn-secondary" href="#">View details </a></p>#}
-{#	</div><!-- /.col-lg-4 -->#}
-{#	<div class="col-lg-4">#}
-{#		<div class="text-center">#}
-{#			<img class=" rounded-circle" width="200" height="140" role="img" src="img/cat-3.jpg" alt="">#}
-{#		</div>#}
-{#		<h2 class="fw-normal m-2">Titre</h2>#}
-{#		<p>Some representative placeholder content for the three columns of text below the carousel. This is the#}
-{#			first column.</p>#}
-{#		<div class="d-flex justify-content-center">#}
-{#			<h6>$123.00</h6>#}
-{#		</div>#}
-{#		<p class=" d-flex justify-content-center m-1"><a class=" font-weight-bold btn btn-secondary" href="#">View details </a></p>#}
-{#	</div>#}
-{#	{% endfor %}#}
+	{#    <div class="col-lg-4"> #}
+	{#        <div class="text-center"> #}
+	{#            <img class=" rounded-circle" width="200" height="140" role="img" src="img/cat-2.jpg" alt=""> #}
+	{#        </div> #}
+	{#        <h2 class="fw-normal m-2">Titre</h2> #}
+	{#        <p>Some representative placeholder content for the three columns of text below the carousel. This is the #}
+	{#            first column.</p> #}
+	{#        <div class="d-flex justify-content-center"> #}
+	{#            <h6>$123.00</h6> #}
+	{#        </div> #}
+	{#        <p class=" d-flex justify-content-center m-1"><a class=" font-weight-bold btn btn-secondary" href="#">View details </a></p> #}
+	{#    </div><!-- /.col-lg-4 --> #}
+	{#    <div class="col-lg-4"> #}
+	{#        <div class="text-center"> #}
+	{#            <img class=" rounded-circle" width="200" height="140" role="img" src="img/cat-3.jpg" alt=""> #}
+	{#        </div> #}
+	{#        <h2 class="fw-normal m-2">Titre</h2> #}
+	{#        <p>Some representative placeholder content for the three columns of text below the carousel. This is the #}
+	{#            first column.</p> #}
+	{#        <div class="d-flex justify-content-center"> #}
+	{#            <h6>$123.00</h6> #}
+	{#        </div> #}
+	{#        <p class=" d-flex justify-content-center m-1"><a class=" font-weight-bold btn btn-secondary" href="#">View details </a></p> #}
+	{#    </div> #}
+	    {% endfor %}
 </div>
 <!-- Products End -->

@@ -29,7 +29,7 @@ class VetementRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('v')
 
             ->orderBy('v.id', 'DESC')
-            ->setMaxResults(5)
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult()
         ;

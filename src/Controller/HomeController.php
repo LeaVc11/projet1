@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\BlogPostRepository;
-use App\Repository\CategorieRepository;
 use App\Repository\VetementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
