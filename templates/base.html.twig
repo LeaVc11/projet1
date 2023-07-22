@@ -25,23 +25,17 @@
 {% include 'base/nav.html.twig' %}
 	{% endif %}
 
-	<!--Categorie Start-->
+
 	<div class="container-fluid pt-5"> {% if block('carousel') is not defined %}{% endif %}
 		{% block content %}
 
 		{% endblock %}
 	</div>
-	<!--Categorie End-->
-	<!--Vetement Start-->
-{#	<div class="container-fluid pt-5{% if block('carousel') is not defined %}{% endif %}" >#}
-{#		{% block content %}#}
 
-{#		{% endblock %}#}
-{#	</div>#}
 
-	<!--Vetement End-->
+
+
 	<!-- FOOTER -->
-
 	<div class="container-fluid bg-secondary text-dark mt-5 pt-5">
 		{% include 'base/footer.html.twig' %}
 	</div>
