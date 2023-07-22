@@ -7,21 +7,21 @@
 	<div class="container-login ">
 		<h2>Connexion</h2>
 		<form>
-{#			<div class="input-group ">#}
-{#				<label for="user">Nom</label>#}
+			<div class="input-group ">
+				<label for="user">Nom</label>
 
-{#				<input#}
-{#						class="mt-3"#}
-{#						type="text"#}
-{#						autocomplete="off"#}
-{#						id="user"#}
-{#						placeholder="6 caractères minimum"#}
-{#						maxlength="24"#}
-{#				>#}
-{#				<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">#}
+				<input
+						class="mt-3"
+						type="text"
+						autocomplete="off"
+						id="user"
+						placeholder="6 caractères minimum"
+						maxlength="24"
+				>
+				<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
 
-{#				<span class="error-msg">Choisissez un pseudo contenant au moins 3 caractères</span>#}
-{#			</div>#}
+				<span class="error-msg">Choisissez un pseudo contenant au moins 3 caractères</span>
+			</div>
 			<div class="input-group">
 				<label for="email">Email</label>
 
@@ -51,15 +51,10 @@
 
 			</div>
 
-			<button type="submit" >Se connecter</button>
+			<button type="submit"><a href="{{ path('app_login') }}">Se connecter</a></button>
+			<button type="submit"><a href="{{ path('app_register') }}">S'inscrire</a></button>
 		</form>
-		<div class="d-flex justify-content-center align-items-center">
-			<div class="col">
-				<div class="d-flex justify-content-center align-items-center create m-2 ">
-						<a href="{{ path('app_register') }}" >Créer un compte</a>
-				</div>
-			</div>
-		</div>
+
 		<a href="{{ path('app_home') }}">Retour</a>
 	</div>
 
