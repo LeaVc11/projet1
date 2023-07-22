@@ -4,55 +4,59 @@
 
 {% block content %}
 
-    <div class="container-login ">
-        <h2>Connexion</h2>
-        <form>
-           <div class="input-group ">
-                <label for="user">Nom</label>
+	<div class="container-login ">
+		<h2>Connexion</h2>
+		<form>
+			<div class="input-group ">
+				<label for="user">Nom</label>
 
-                    <input
-                            class="mt-3"
-                            type="text"
-                            autocomplete="off"
-                            id="user"
-                            placeholder="6 caractères minimum"
-                            maxlength="24"
-                    >
-                    <img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+				<input
+						class="mt-3"
+						type="text"
+						autocomplete="off"
+						id="user"
+						placeholder="6 caractères minimum"
+						maxlength="24"
+				>
+				<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
 
-                <span class="error-msg">Choisissez un pseudo contenant au moins 3 caractères</span>
-            </div>
-            <div class="input-group">
-                <label for="email">Email</label>
+				<span class="error-msg">Choisissez un pseudo contenant au moins 3 caractères</span>
+			</div>
+			<div class="input-group">
+				<label for="email">Email</label>
 
-                    <input
-                            class="mt-3"
-                            type="text"
-                            autocomplete="off"
-                            id="email"
-                            placeholder="Votre email"
-                    >
-                    <img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+				<input
+						class="mt-3"
+						type="text"
+						autocomplete="off"
+						id="email"
+						placeholder="Votre email"
+				>
+				<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
 
-                <span class="error-msg">Rentrer un email valide.</span>
-            </div>
-            <div class="input-group">
-                <label for="password">Mot de passe</label>
+				<span class="error-msg">Rentrer un email valide.</span>
+			</div>
+			<div class="input-group">
+				<label for="password">Mot de passe</label>
 
-                    <input
-                            class="mt-3"
-                            type="password"
-                            autocomplete="off"
-                            id="password"
-                            placeholder="Votre mot de passe"
-                    >
-                    <img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+				<input
+						class="mt-3"
+						type="password"
+						autocomplete="off"
+						id="password"
+						placeholder="Votre mot de passe"
+				>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
 
-            </div>
+			</div>
 
-            <button type="submit">Création du compte</button>
-        </form>
-        <a href="{{ path('app_home') }}" >Retour</a>
-    </div>
+			<button type="submit" >Se connecter</button>
+			<button type="submit" href="{{ path('app_register') }}" >Créer un compte</button>
+
+		</form>
+
+		<a href="{{ path('app_home') }}">Retour</a>
+	</div>
 
 {% endblock %}

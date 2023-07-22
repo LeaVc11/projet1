@@ -24,7 +24,7 @@ class RegisterController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function index(Request $request, UserPasswordHasherInterface $encoder, MailService $mailService, AlertServiceInterface $alertService): Response
+    public function index(Request $request, UserPasswordHasherInterface $encoder): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -37,20 +37,10 @@ class RegisterController extends AbstractController
             $password = $encoder->hashPassword($user, $user->getPassword());
 
             $user->setPassword($password);
-            $imageFile = $form->get('file')->getData();
-            $imageName = uniqid() . '.' . $imageFile->guessExtension();
-            $imageFile->move(
-                $this->getParameter('profiles_directory'),
-                $imageName
-            );
-            $user->setImage($imageName);
+
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $content = "Bonjour " . $user->getUsername() . "<br/>Bienvenue sur .";
-            $mailService->send($user->getEmail(), $user->getUsername(), 'Bienvenue ', $content);
-
-           $alertService->success('Votre inscription s\'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.');
 
         return $this->redirectToRoute('app_home');
     }
