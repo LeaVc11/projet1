@@ -1,12 +1,51 @@
+
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}S'inscrire{% endblock %}
 
 {% block content %}
 
-	<div class="container-login">
-	<h2>Inscription</h2>
-	{{ form(form) }}
+	<div class="container-login mt-5">
+		<h2>Inscription</h2>
+		{{ form_start(form) }}
+		<div class="input-group">
+			{{ form_label(form.nom) }}
+			{{ form_widget(form.nom) }}
+			<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+			<span class="error-msg">Choisissez un pseudo contenant au moins 3 caractères</span>
+		</div>
+		<div class="input-group">
+			{{ form_label(form.email) }}
+			{{ form_widget(form.email) }}
+			<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+			<span class="error-msg">Rentrer un email valide.</span>
+		</div>
+		<div class="input-group">
+			{{ form_label(form.password.first) }}
+			{{ form_widget(form.password.first) }}
+			<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+			<span class="error-msg">Erreur de saisi.</span>
+		</div>
+		<div class="input-group">
+			{{ form_label(form.password.second) }}
+			{{ form_widget(form.password.second) }}
+			<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+			<span class="error-msg">Erreur de saisi.</span>
+		</div>
+		<div class="input-group">
+			<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+			<span class="pswd-info mt-3">Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.</span>
+			<div class="lines">
+				<div class="l1"><span>faible</span></div>
+				<div class="l2"><span>moyen</span></div>
+				<div class="l3"><span>fort</span></div>
+			</div>
+		</div>
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
+	</div>
+
 	{#    <div class="input-group ">
 	</div>
 		<form>
@@ -18,7 +57,7 @@
 				type="text"
 				autocomplete="off"
 				id="user"
-				placeholder="3 caractères minimum"
+				placeholder="6 caractères minimum"
 				maxlength="24"
 		>
 		<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">

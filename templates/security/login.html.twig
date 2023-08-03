@@ -1,4 +1,4 @@
-<!doctype html>
+{#<!doctype html>
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
@@ -20,12 +20,12 @@
 	<!-- Custom styles for this template -->
 	<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
 </head>
-<body>
-{#{% extends 'base.html.twig' %}
+<body>#}
+{% extends 'base.html.twig' %}
 
 {% block title %}Login{% endblock %}
 
-{% block content %}#}
+{% block content %}
 
 	<div class="container-login ">
 		<h2>Connexion</h2>
@@ -76,8 +76,31 @@
 
 
 		</form>
-		<button type="submit"><a class="text-decoration-none button" href="{{ path('app_login') }}">Se connecter</a></button>
+		<form>	<form method="post">
+			<div class="input-group">
 
+				<span class="pswd-info">Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.</span>
+				<div class="lines">
+					<div class="l1"><span>faible</span></div>
+					<div class="l2"><span>moyen</span></div>
+					<div class="l3"><span>fort</span></div>
+				</div>
+			</div>
+
+			<div class="input-group">
+				<label for="psw-confirmation">Confirmez le mot de passe</label>
+				<div class="icon-input-container">
+					<input
+							type="password"
+							autocomplete="off"
+							id="psw-confirmation"
+							placeholder="Confirmez le mot de passe"
+					>
+					<img src="ressources/check.svg" alt="icone de validation" class="icon-verif">
+				</div>
+			</div>
+			<button type="submit">Création du compte</button>
+		</form>
 		<a href="{{ path('app_home') }}">Retour</a>
 	</div>
-
+{% endblock %}

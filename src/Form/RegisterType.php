@@ -56,48 +56,39 @@ class RegisterType extends AbstractType
                 ),
 
             ])
-            ->add('password', PasswordType::class, [
-                'label' => 'Votre mot de passe',
-                'constraints' => new Length
-                (
-                    [
-                        'min' => 2,
-                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères.',
-                        'max' => 60,
-                    ]
-                ),
-                'attr' => [
-                    'class' => 'form-control-lg'
-                ],
-                'required' => true,
-
-            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identique',
-                'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'first_options' =>
                     [
                         'label' => 'Mot de passe',
                         'attr' =>
                             [
+                                'class' => 'mt-3',
                                 'placeholder' => 'Merci de saisir votre mot de passe',
                             ],
+                        'row_attr' => [
+                            'class' => 'input-group'
+                        ]
                     ],
                 'second_options' =>
                     [
                         'label' => 'Confirmez votre mot de passe',
                         'attr' =>
                             [
+                                'class' => 'mt-3',
                                 'placeholder' => 'Merci de confirmer votre  mot de passe',
                             ],
+                        'row_attr' => [
+                            'class' => 'input-group'
+                        ]
                     ],
             ])
             ->add('submit',SubmitType::class,
-            [
-                'label'=> 'S\'inscrire'
-            ]);
+                [
+                    'label'=> 'S\'inscrire'
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

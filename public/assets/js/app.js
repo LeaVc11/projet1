@@ -192,7 +192,7 @@ function passwordStrength(){
         })
     }
 
-    if(validationIcons[3].style.display === "inline") {
+    if(validationIcons[2].style.display === "inline") {
         confirmPassword()
     }
 }
@@ -207,14 +207,14 @@ function confirmPassword(){
     const confirmedValue = confirmInput.value;
 
     if(!confirmedValue && !passwordValue) {
-        validationIcons[3].style.display = "none";
+        validationIcons[2].style.display = "none";
     }
     else if(confirmedValue !== passwordValue) {
-        showValidation({index: 3, validation: false})
+        showValidation({index: 2, validation: false})
         inputsValidity.passwordConfirmation = false;
     }
     else {
-        showValidation({index: 3, validation: true})
+        showValidation({index: 2, validation: true})
         inputsValidity.passwordConfirmation = true;
     }
 }
