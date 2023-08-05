@@ -13,17 +13,20 @@ class UserFixtures extends AbstractFakerFeaturesServices
     {
         parent::__construct();
     }
+
     public function load(ObjectManager $manager)
     {
         // Création d'un utilisateur
-        $user = new User();
-        $user->setEmail('user@test.com')
-            ->setPrenom($this->faker->firstName())
-            ->setNom($this->faker->lastName())
-            ->setTelephone($this->faker->phoneNumber());
-        $password = ($this->hasher->hashPassword($user, 'password'));
-        $user->setPassword($password);
-        $manager->persist($user);
+        for ($i = 0; $i < 10; $i++) {
+            $user = new User();
+            $user->setEmail($this->faker->email())
+                ->setPrenom($this->faker->firstName())
+                ->setNom($this->faker->lastName());
+            /*  ->setTelephone($this->faker->phoneNumber());*/
+            $password = ($this->hasher->hashPassword($user, 'password'));
+            $user->setPassword($password);
+            $manager->persist($user);
+        }
         $manager->flush();
     }
 

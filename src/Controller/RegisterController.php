@@ -32,12 +32,10 @@ class RegisterController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $password = $encoder->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-
         return $this->redirectToRoute('app_home');
     }
         return $this->render('register/index.html.twig', [
