@@ -1,26 +1,4 @@
-{#<!doctype html>
-<html lang="fr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Projet E-commerce">
-	<meta name="generator" content="Jekyll v4.1.1">
-	<title>{% block title %} Se connecter{% endblock %}</title>
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;1,100&display=swap"
-	      rel="stylesheet">
-	<!-- Font Awesome -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-	<!-- Bootstrap core CSS -->
-	<link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-
-	<!-- Custom styles for this template -->
-	<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
-</head>
-<body>#}
 {% extends 'base.html.twig' %}
 
 {% block title %}Login{% endblock %}
@@ -30,6 +8,15 @@
 	<div class="container-login ">
 		<h2>Connexion</h2>
 		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="mb-3">
+					You are logged in as {{ app.user.nom }}, <a href="{{ path('app_logout') }}">Logout</a>
+				</div>
+			{% endif %}
 			<div class="input-group ">
 				<label for="user">Nom</label>
 

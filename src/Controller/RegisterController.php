@@ -4,9 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegisterType;
-use App\Service\AlertServiceInterface;
-use App\Service\Interface;
-use App\Service\MailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,11 +29,12 @@ class RegisterController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $encoder->hashPassword($user, $user->getPassword());
+            $user = $form->getData();
+
+      $password = $encoder->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-        return $this->redirectToRoute('app_home');
     }
         return $this->render('register/index.html.twig', [
             'form' => $form->createView(),
